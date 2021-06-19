@@ -5,9 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  /**
+   * The React.StrictMode is only use in development mode
+   * to render twice the body, this cause that the logs of
+   * the app are render before is invoked, but in production
+   * this not happen
+   */
+  //<React.StrictMode>
+    <App />,
+  //</React.StrictMode>,
   document.getElementById('root')
 );
 

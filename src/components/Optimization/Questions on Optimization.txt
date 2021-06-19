@@ -1,0 +1,39 @@
+1. When do I use same element reference technique and when 
+do I use React.memo??
+
+Same element reference =>  {
+  When your parent component re-renders because of state
+  change in the parent component.
+
+  This technique does not work if the parent component
+  re-renders because of changes in its props
+
+  state change?? Yes
+  props change?? No
+}
+
+React.memo => {
+  When your child component is being asked to re-render due
+  to changes in the parent's state which do not affect the
+  child component props in anyway.
+}
+
+2. If React.memo provides the optimization by comparing the
+props, why not wrap every single component with React.memo?
+
+Why doesn't React just internally memoize every component
+and not expose React.memo to the developers??
+
+=> {
+  Shallow comparasions aren't free. They're O(prop count).
+  And they only buy something if it bails out.
+
+  All comparasions where we end up re-rendering are wasted.
+  Why would you except always comparing to be faster?
+  Considering many components always get different props.
+}
+
+When you optimize the rendering of one component, React will
+also skip rendering that component's entire subtree because
+it's effectively stopping the default "render children 
+recursively" behavior of React.
